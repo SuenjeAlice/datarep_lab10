@@ -13,7 +13,8 @@ export class Movies extends Component{
         //used map function to pull array apart and arrow function 
         return this.props.movies.map( (movie)=>{
             //used MovieItem and created movie variable and passed individual movie object into it
-            return <MovieItem movie = {movie}></MovieItem>
+            //Added ReloadData
+            return <MovieItem movie = {movie} ReloadData={this.props.ReloadData}></MovieItem>
         })
             
     }

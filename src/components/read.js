@@ -11,6 +11,14 @@ const { Component } = require("react");
 //created a Read class which inherits from Component, used export keyword to export the class
 export class Read extends Component{
 
+    //
+    constructor(){
+        super();
+        
+        //bind ReloadData
+        this.ReloadData = this.ReloadData.bind(this);
+    }
+
     //used object 'state' to store data associated with this component
     state = {
         //created movies array and added JSON data to array
@@ -34,13 +42,27 @@ export class Read extends Component{
         });
     }
 
+    //
+    ReloadData(){
+        axios.get('http://localhost:4000/api/movies')
+        .then((response)=>{
+                this.setState({
+                    movies: response.data
+                })
+        })
+        .catch((error)=>{ 
+            console.log(error)
+        });
+    }
+
     //used render method
     render(){
         return(
             <div>
                 <h1>This is the read component.</h1>
                 {/*used Movies and create variable movies and passed informatiion from movies array to it */}
-                <Movies movies={this.state.movies}></Movies>
+                {/*Added ReloadData */}
+                <Movies movies={this.state.movies} ReloadData={this.ReloadData}></Movies>
             </div>
         );
     }
