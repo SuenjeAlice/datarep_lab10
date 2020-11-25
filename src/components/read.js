@@ -1,4 +1,4 @@
-//Data Representation & Querying - Lab 7 - G00363332 - Sünje Alice Winteler
+//Data Representation & Querying - Lab 9 - G00363332 - Sünje Alice Winteler
 import React from 'react';
 
 //imported Axios
@@ -42,8 +42,9 @@ export class Read extends Component{
         });
     }
 
-    //
+    //created ReloadData method to reload data
     ReloadData(){
+        //used get method
         axios.get('http://localhost:4000/api/movies')
         .then((response)=>{
                 this.setState({

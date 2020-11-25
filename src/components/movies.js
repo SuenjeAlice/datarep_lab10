@@ -1,4 +1,4 @@
-//Data Representation & Querying - Lab 7 - G00363332 - Sünje Alice Winteler
+//Data Representation & Querying - Lab 9 - G00363332 - Sünje Alice Winteler
 import React from 'react';
 
 //imported MovieItem

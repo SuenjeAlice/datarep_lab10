@@ -23,13 +23,14 @@ export class MovieItem extends Component {
         this.DeleteMovie = this.DeleteMovie.bind(this);
     }
 
-    //
+    //created DeleteMovie method to delete movie
     DeleteMovie(e){
         //makes event cancelable
         e.preventDefault();
 
         console.log("Delete: " + this.props.movie._id)
 
+        //used delete method
         axios.delete("http://localhost:4000/api/movies/" + this.props.movie._id)
         .then(()=> {
             this.props.ReloadData();

@@ -1,4 +1,4 @@
-//Data Representation & Querying - Lab 8 - G00363332 - Sünje Alice Winteler
+//Data Representation & Querying - Lab 9 - G00363332 - Sünje Alice Winteler
 import React from 'react';
 
 //imported axios
@@ -31,6 +31,7 @@ export class Edit extends Component{
     componentDidMount(){
         console.log(this.props.match.params.id);
 
+        //used get method
         axios.get('http://localhost:4000/api/movies/' + this.props.match.params.id)
         .then(response => {
             this.setState({
@@ -84,6 +85,7 @@ export class Edit extends Component{
             _id: this.state._id
         }
 
+        //used put method
         axios.put('http://localhost:4000/api/movies/' + this.state._id, newMovie)
         .then(res => {
             console.log(res.data)
