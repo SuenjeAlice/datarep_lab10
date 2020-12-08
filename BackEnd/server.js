@@ -9,6 +9,8 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 //include mongoose
 const mongoose = require('mongoose');
+//include path
+const path = require('path');
 
 //add use method for cors
 app.use(cors());
@@ -20,6 +22,10 @@ app.use(function(req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
     });
+
+//
+app.use(express.static(path.join(__dirname, '../build')))
+app.use('/static', express.static(path.join(__dirname, 'build//static')))    
 
 //add use method for bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -148,6 +154,12 @@ app.post('/api/movies', (req, res) => {
     //response ->avoids replications
     res.send('Item Added');
 
+})
+
+//
+app.get('*', (req, res)=>{
+  //  
+  res.sendFile(path.join(__dirname + '/../build/index.html'));
 })
 
 app.listen(port, () => {
