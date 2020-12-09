@@ -1,4 +1,4 @@
-//Data Representation & Querying - Lab 9 - G00363332 - Sünje Alice Winteler
+//Data Representation & Querying - Lab 10 - G00363332 - Sünje Alice Winteler
 const express = require('express')
 const app = express()
 const port = 4000
@@ -13,17 +13,17 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 //add use method for cors
-app.use(cors());
+// app.use(cors());
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-    });
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//     res.header("Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//     });
 
-//
+//add use method to configure how to get from here to the build folder
 app.use(express.static(path.join(__dirname, '../build')))
 app.use('/static', express.static(path.join(__dirname, 'build//static')))    
 
@@ -156,9 +156,9 @@ app.post('/api/movies', (req, res) => {
 
 })
 
-//
+//used get method, * -> all unused paths 
 app.get('*', (req, res)=>{
-  //  
+  //send back the index file  
   res.sendFile(path.join(__dirname + '/../build/index.html'));
 })
 
